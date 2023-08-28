@@ -1,0 +1,85 @@
+/* Google Font */
+
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+
+/* Styling */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at bottom, #013155 0%, #01162e 100%);
+  padding: 60px;
+  padding-bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 {
+  color: #fff;
+  text-align: center;
+  font-family: Creepster;
+  font-size: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 90px;
+}
+
+.flexbox {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 120px);
+  max-width: 650px;
+  max-height: 650px;
+  margin-bottom: 15px;
+}
+
+.eight-ball {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: 1px solid #f0fff1;
+  background: linear-gradient(312deg, #040f0f 0%, #282828 100%);
+  box-shadow: 0px 0px 30px 0px white;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50px;
+  animation: move;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  z-index: 1;
+}
+
+.type-1 {
+  width: 1px;
+  height: 1px;
+}
+.type-2 {
+  width: 2px;
+  height: 2px;
+}
+.type-3 {
+  width: 3px;
+  height: 3px;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1000px);
+  }
+}
