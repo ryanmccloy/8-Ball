@@ -20,6 +20,20 @@ createStars(1, 100);
 createStars(2, 85);
 createStars(3, 70);
 
+// Heading effect
+
+const textContainer = document.querySelector(".heading");
+const text = textContainer.textContent;
+textContainer.innerHTML = "";
+
+// Wrap each letter in a span with class "letter"
+for (let i = 0; i < text.length; i++) {
+  const span = document.createElement("span");
+  span.className = "heading";
+  span.textContent = text[i];
+  textContainer.appendChild(span);
+}
+
 // Magic 8-Ball Answers
 
 const answer1 = "It is certain";

@@ -20,7 +20,7 @@ body {
   justify-content: space-between;
 }
 
-h1 {
+.heading {
   color: #fff;
   text-align: center;
   font-family: Creepster;
@@ -29,6 +29,12 @@ h1 {
   text-transform: uppercase;
   margin-top: 30px;
   margin-bottom: 90px;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.heading:hover {
+  color: #70e000;
 }
 
 .flexbox {
