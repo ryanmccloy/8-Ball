@@ -26,7 +26,6 @@ const textContainer = document.querySelector(".heading");
 const text = textContainer.textContent;
 textContainer.innerHTML = "";
 
-// Wrap each letter in a span with class "letter"
 for (let i = 0; i < text.length; i++) {
   const span = document.createElement("span");
   span.className = "heading";
@@ -56,3 +55,43 @@ const answer17 = "My reply is no";
 const answer18 = "My sources say no";
 const answer19 = "Outlook not so good";
 const answer20 = "Very doubtful";
+
+// Heading event for 8-Ball click
+
+const headingColour = function () {
+  const letter = document.querySelectorAll(".heading");
+  const duration = 5000 / letter.length;
+
+  for (let i = 0; i < letter.length; i++) {
+    setTimeout(() => {
+      letter[i].style.color = "#70e000";
+    }, i * duration);
+  }
+};
+
+const resetHeadingColour = function () {
+  const letter = document.querySelectorAll(".heading");
+  const duration = 1000 / letter.length;
+
+  for (let i = 0; i < letter.length; i++) {
+    setTimeout(() => {
+      letter[i].style.color = "#fff";
+    }, i * duration);
+  }
+};
+
+// Eight Ball Click Effect
+
+const eightBall = document.querySelector(".flexbox");
+
+eightBall.addEventListener("click", function () {
+  // Fix double click glitch
+  headingColour();
+  setTimeout(resetHeadingColour, 5000);
+});
+
+// Heading turns green letter by letter for a total of 5 seconds
+// At the same time the ball vibrates faster and faster for a total of 5 seconds
+// the white glow turns green and slowly gets bigger for a total of 5 seconds
+// During this 5 seconds the glass bubbles
+// After 5 seconds the ball stops shaking, glow turns back to white, heading turns back to white, bubbles stop, and answer is revelaed
