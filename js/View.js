@@ -148,7 +148,7 @@ const createBubbles = function (quantity) {
     let bubble = document.createElement("div");
     bubble.classList.add("bubble");
     bubble.style.left = `${randomNumber(1, 99)}%`;
-    bubble.style.animationDuration = `${randomNumber(2, 4)}s`;
+    bubble.style.animationDuration = `${randomNumber(2, 3.5)}s`;
     bubble.addEventListener("animationend", function () {
       bubble.remove();
     });
@@ -193,5 +193,5 @@ eightBallFlex.addEventListener("click", function () {
 
   // Bubble effect
   const bubblingGlass = setInterval(() => createBubbles(15), 300);
-  setTimeout(() => clearInterval(bubblingGlass), 4000);
+  setTimeout(() => clearInterval(bubblingGlass), 3000);
 });

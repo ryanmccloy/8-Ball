@@ -68,22 +68,6 @@ body {
   /* animation: vibrate 0.2s linear infinite; */
 }
 
-/* .vibrate {
-  animation: vibrate 0.2s linear infinite;
-} */
-
-@keyframes vibrate {
-  0% {
-    transform: translate(0);
-  }
-  50% {
-    transform: translate(7px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
-
 .eight-ball .glass {
   width: 200px;
   height: 200px;
@@ -107,24 +91,12 @@ body {
   animation: fadeOutIn 4s ease-in-out;
 }
 
-@keyframes fadeOutIn {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 .answer {
   color: #f0fff1;
   width: 86px;
   position: absolute;
   font-family: Helvetica;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   letter-spacing: -0.36px;
   text-transform: uppercase;
@@ -133,23 +105,14 @@ body {
 
 .bubble {
   background: linear-gradient(312deg, #0d3958, #01162e);
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
   border-radius: 100%;
   animation: bubbling;
   animation-timing-function: linear;
   z-index: 10;
   position: absolute;
   top: 200px;
-}
-
-@keyframes bubbling {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-250px);
-  }
 }
 
 .star {
@@ -175,11 +138,46 @@ body {
   height: 3px;
 }
 
+/* Keyframes */
+
 @keyframes move {
   0% {
     transform: translateY(0);
   }
   100% {
     transform: translateY(-1000px);
+  }
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(7px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes bubbling {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-250px);
+  }
+}
+
+@keyframes fadeOutIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
