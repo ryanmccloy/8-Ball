@@ -1,5 +1,42 @@
 "use strict";
 
+const eightBallFlex = document.querySelector(".flexbox");
+const eightBall = document.querySelector(".eight-ball");
+const textContainer = document.querySelector(".heading");
+const glass = document.querySelector(".glass");
+const triangle = document.querySelector(".triangle");
+const answer = document.querySelector(".answer");
+let isAnimating = false;
+
+const answers = [
+  "It is certain",
+  "It is Decidedly So",
+  "Without A Doubt",
+  "Yes Definitely",
+  "You May Rely On it",
+  "As I see it, Yes",
+  "Most Likely",
+  "Outlook Good",
+  "Yes",
+  "Signs Point To Yes",
+  "Reply Hazy, Try again",
+  "Ask Again Later",
+  "Better Not Tell You Now",
+  "Cannot Predict Now",
+  "Concentrate and ask again",
+  "Don't count on it",
+  "My reply is no",
+  "My sources say no",
+  "Outlook not so good",
+  "Very doubtful",
+];
+
+// Random Number Function
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * max) + min;
+}
+
 // Starry background effect
 const createStars = function (type, quantity) {
   for (let i = 0; i < quantity; i++) {
@@ -12,17 +49,12 @@ const createStars = function (type, quantity) {
   }
 };
 
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * max) + min;
-}
-
 createStars(1, 100);
 createStars(2, 85);
 createStars(3, 70);
 
-// Heading effect
+// Heading effects
 
-const textContainer = document.querySelector(".heading");
 const text = textContainer.textContent;
 textContainer.innerHTML = "";
 
@@ -33,34 +65,9 @@ for (let i = 0; i < text.length; i++) {
   textContainer.appendChild(span);
 }
 
-// Magic 8-Ball Answers
-
-const answer1 = "It is certain";
-const answer2 = "It is Decidedly So";
-const answer3 = "Without A Doubt";
-const answer4 = "Yes Definitely";
-const answer5 = "You May Rely On it";
-const answer6 = "As I see it, Yes";
-const answer7 = "Most Likely";
-const answer8 = "Outlook Good";
-const answer9 = "Yes";
-const answer10 = "Signs Point To Yes";
-const answer11 = "Reply Hazy, Try again";
-const answer12 = "Ask Again Later";
-const answer13 = "Better Not Tell You Now";
-const answer14 = "Cannot Predict Now";
-const answer15 = "Concentrate and ask again";
-const answer16 = "Don't count on it";
-const answer17 = "My reply is no";
-const answer18 = "My sources say no";
-const answer19 = "Outlook not so good";
-const answer20 = "Very doubtful";
-
-// Heading event for 8-Ball click
-
 const headingColour = function () {
   const letter = document.querySelectorAll(".heading");
-  const duration = 5000 / letter.length;
+  const duration = 3500 / letter.length;
 
   for (let i = 0; i < letter.length; i++) {
     setTimeout(() => {
@@ -71,27 +78,120 @@ const headingColour = function () {
 
 const resetHeadingColour = function () {
   const letter = document.querySelectorAll(".heading");
-  const duration = 1000 / letter.length;
+  const duration = 300 / letter.length;
 
   for (let i = 0; i < letter.length; i++) {
     setTimeout(() => {
       letter[i].style.color = "#fff";
+      if (i === letter.length - 1) {
+        isAnimating = false;
+      }
     }, i * duration);
   }
 };
 
-// Eight Ball Click Effect
+// Vibration Effect
 
-const eightBall = document.querySelector(".flexbox");
+const startVibration = function () {
+  eightBallFlex.style.animation = "vibrate 0.2s linear infinite";
+  eightBall.style.boxShadow = "0px 0px 30px 0px #70e000";
+  setTimeout(() => {
+    eightBallFlex.style.animation = "";
+    eightBall.style.boxShadow = "";
+  }, 4000);
+};
 
-eightBall.addEventListener("click", function () {
-  // Fix double click glitch
+const increaseVibration = function () {
+  let initialDuration = 200;
+  const decreaseAmount = 10;
+  const minimumDuration = 50;
+
+  const vibrationInterval = setInterval(() => {
+    eightBallFlex.style.animation = `vibrate ${initialDuration}ms linear infinite`;
+    initialDuration -= decreaseAmount;
+
+    if (initialDuration <= minimumDuration) {
+      clearInterval(vibrationInterval); // Stop the interval once we hit the fastest vibration
+    }
+  }, initialDuration);
+
+  setTimeout(() => {
+    clearInterval(vibrationInterval); // Ensure interval is cleared after 4 seconds
+  }, 4000);
+};
+
+// Blur effect
+
+const animateBoxShadow = function () {
+  let initialBlur = 30;
+  const maxBlur = 70;
+  const increaseBlur = maxBlur / 40;
+
+  const shadowInterval = setInterval(() => {
+    eightBall.style.boxShadow = `0px 0px ${initialBlur}px 0px #70e000`;
+    initialBlur += increaseBlur;
+
+    if (initialBlur >= maxBlur) {
+      clearInterval(shadowInterval);
+    }
+  }, 100);
+
+  setTimeout(() => {
+    clearInterval(shadowInterval);
+  }, 4000);
+};
+
+// Bubble effect
+
+const createBubbles = function (quantity) {
+  for (let i = 0; i < quantity; i++) {
+    let bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+    bubble.style.left = `${randomNumber(1, 99)}%`;
+    bubble.style.animationDuration = `${randomNumber(2, 4)}s`;
+    bubble.addEventListener("animationend", function () {
+      bubble.remove();
+    });
+    glass.appendChild(bubble);
+  }
+};
+
+// Glass and Answer Reveal Effect
+
+const revealAnswer = function () {
+  triangle.classList.add("fade");
+  answer.classList.add("fade");
+
+  setTimeout(() => {
+    const randomAnswer = answers[randomNumber(0, answers.length - 1)];
+    answer.textContent = randomAnswer;
+  }, 2000);
+
+  triangle.addEventListener("animationend", function () {
+    triangle.classList.remove("fade");
+    answer.classList.remove("fade");
+  });
+};
+
+// Eight Ball Click Event
+
+eightBallFlex.addEventListener("click", function () {
+  if (isAnimating) return;
+  isAnimating = true;
+
+  // Answer Animation
+  revealAnswer();
+
+  // Heading effect
   headingColour();
-  setTimeout(resetHeadingColour, 5000);
-});
+  setTimeout(resetHeadingColour, 4000);
 
-// Heading turns green letter by letter for a total of 5 seconds
-// At the same time the ball vibrates faster and faster for a total of 5 seconds
-// the white glow turns green and slowly gets bigger for a total of 5 seconds
-// During this 5 seconds the glass bubbles
-// After 5 seconds the ball stops shaking, glow turns back to white, heading turns back to white, bubbles stop, and answer is revelaed
+  // Eight ball vibrate and box shadow
+  startVibration();
+  increaseVibration();
+  animateBoxShadow();
+
+  // Bubble effect
+  const bubblingGlass = setInterval(() => createBubbles(15), 300);
+  setTimeout(() => clearInterval(bubblingGlass), 4000);
+});
