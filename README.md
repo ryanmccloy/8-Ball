@@ -2,6 +2,9 @@
 
 _Personal project completed using vanilla JavaScript_
 
+This can be accessed at:
+https://magic-8-ball-dun.vercel.app/
+
 Welcome to the Magic 8-Ball App! Unsure about a decision or curious about the future? Just ask a question, click on the Magic 8-Ball, and reveal the answer the universe has for you.
 
 Features
