@@ -1,5 +1,7 @@
 # 8-Ball
 
+_Personal project completed using vanilla JavaScript_
+
 Welcome to the Magic 8-Ball App! Unsure about a decision or curious about the future? Just ask a question, click on the Magic 8-Ball, and reveal the answer the universe has for you.
 
 Features
