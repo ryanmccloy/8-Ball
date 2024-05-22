@@ -12,7 +12,7 @@
 body {
   min-height: 100vh;
   background: radial-gradient(ellipse at bottom, #013155 0%, #01162e 100%);
-  padding: 60px;
+  padding: 40px;
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
@@ -24,11 +24,11 @@ body {
   color: #fff;
   text-align: center;
   font-family: Creepster;
-  font-size: 40px;
+  font-size: 35px;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-top: 30px;
-  margin-bottom: 90px;
+  margin-bottom: 75px;
   transition: color 0.3s ease;
   cursor: default;
 }
@@ -44,9 +44,8 @@ body {
   align-items: center;
   justify-content: center;
   width: calc(100% - 120px);
-  max-width: 650px;
-  max-height: 650px;
-  margin-bottom: 15px;
+  max-width: 550px;
+  max-height: 550px;
 }
 
 .eight-ball {
@@ -179,5 +178,76 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  body {
+    padding: 30px;
+    padding-bottom: 60px;
+    justify-content: flex-start;
+  }
+
+  .heading {
+    font-size: 30px;
+
+    margin-top: 5%;
+    margin-bottom: 15%;
+  }
+
+  .flexbox {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .eight-ball .glass {
+    width: 120px;
+    height: 120px;
+  }
+
+  .triangle {
+    width: 110%;
+    height: 110%;
+    margin-top: -28px;
+  }
+
+  .answer {
+    width: 60px;
+    font-size: 12px;
+  }
+
+  .bubble {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .heading {
+    font-size: 20px;
+
+    margin-top: 15%;
+    margin-bottom: 40%;
+  }
+
+  .eight-ball .glass {
+    width: 90px;
+    height: 90px;
+  }
+
+  .triangle {
+    width: 140%;
+    height: 140%;
+    margin-top: -18px;
+  }
+
+  .answer {
+    width: 50px;
+    font-size: 10px;
+  }
+
+  .bubble {
+    height: 16px;
+    width: 16px;
   }
 }
